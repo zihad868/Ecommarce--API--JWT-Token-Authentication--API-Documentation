@@ -69,7 +69,7 @@ class ProductSerializer(serializers.ModelSerializer):
 # Order Serializer
 class OrderSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Product
+        model = Order
         fields = '__all__'
         
         
