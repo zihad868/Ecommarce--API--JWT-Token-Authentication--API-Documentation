@@ -4,7 +4,8 @@ from rest_framework import generics,status,views,permissions
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
-from .serializers import RegisterSerializer,LoginSerializer,LogoutSerializer
+from .models import Product, Order, OrderItem, Review
+from api.serializers import RegisterSerializer,LoginSerializer,LogoutSerializer, ProductSerializer
 
 # Create your views here.
 
@@ -33,3 +34,15 @@ class LogoutAPIView(generics.GenericAPIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+# Product 
+class ProductListCreateView(generics.ListCreateAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    permission_classes = [IsAuthenticated]
+
+class ProductRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    permission_classes = [IsAuthenticated]
