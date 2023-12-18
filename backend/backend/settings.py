@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     #3rd party apps 
     'rest_framework',
     'rest_framework_simplejwt',
+     'rest_framework_swagger'
 ]
 
 
@@ -103,7 +104,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(BASE_DIR, 'templates')],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
